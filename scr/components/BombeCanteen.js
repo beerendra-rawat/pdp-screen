@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingRight: 24,
   },
   headingText: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-SemiBold',
     paddingTop: 24,
     fontSize: 24,
     fontWeight: "600",
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
   showMore: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-Medium',
     paddingTop: 8,
     fontSize: 14,
     fontWeight: "500",

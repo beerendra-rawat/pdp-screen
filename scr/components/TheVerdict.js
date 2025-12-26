@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     paddingRight: 24,
   },
   title: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-SemiBold',
     paddingTop: 36,
     paddingBottom: 20,
     fontSize: 22,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   subTitle: {
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'DMSans-Medium',
     fontSize: 20,
     fontWeight: 500,
     color: '#FFFFFF',
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 400,
     color: '#FFFFFF',
+    fontFamily: 'DMSans-Regular',
   },
   divider: {
     height: 1,
@@ -151,12 +152,13 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   footer: {
-    padding: 24,
+    paddingTop: 24,
+    paddingBottom: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   footerText: {
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'Lora-Medium',
     fontSize: 14,
     fontWeight: 400,
     color: '#FFFFFF',

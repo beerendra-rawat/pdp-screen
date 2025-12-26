@@ -13,7 +13,7 @@ export default function Contact() {
       <View style={styles.card}>
         <View style={styles.mapWrapper}>
           <Image style={styles.map} source={require("../../assets/img/map.png")} />
-          <Image style={styles.locationStar} source={require("../../assets/img/locationStar.png")} />
+          <Image style={styles.locationStar} source={require("../../assets/img/pin.png")} />
           <Pressable style={styles.btn}>
             <Text style={styles.btnText} onPress={openDirection}>Get Directions</Text>
             <Image style={styles.directionImg} source={require("../../assets/img/mapBtn.png")} />
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnText: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-Medium',
     fontSize: 12,
     fontWeight: 500,
     paddingRight: 10,

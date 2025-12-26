@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     paddingRight: 24,
   },
   heading: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-SemiBold',
     paddingTop: 36,
     fontSize: 22,
     fontWeight: 600,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 16,
     fontWeight: 500,
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'DMSans-Medium',
   },
   ratingText: {
     fontSize: 14,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     paddingRight: 6,
     fontSize: 14,
     fontWeight: 600,
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'DMSans-SemiBold',
   },
   commentRow: {
     marginTop: 4,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontSize: 12,
     fontWeight: 500,
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'DMSans-Medium',
   },
   divider: {
     height: 1,
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     paddingBottom: 21,
     fontSize: 16,
     fontWeight: 500,
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'Lora-Medium',
   },
   rightArrow: {
     marginRight: 20,

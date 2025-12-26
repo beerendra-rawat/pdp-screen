@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF2F2",
   },
   titleHeading: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-SemiBold',
     paddingTop: 36,
     fontSize: 22,
     fontWeight: 600,
@@ -115,13 +115,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     fontWeight: "500",
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'Lora-Medium',
   },
   section: {
     padding: 24,
   },
   sHeading: {
-    fontFamily: 'LoraSemiBold',
+    fontFamily: 'Lora-SemiBold',
     fontSize: 22,
     fontWeight: 600,
     marginBottom: 24,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     fontSize: 16,
     fontWeight: "500",
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'DMSans-Medium',
   },
   ratingRow: {
     flexDirection: 'row',

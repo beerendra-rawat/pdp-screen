@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     title: {
-        fontFamily: 'LoraSemiBold',
+        fontFamily: 'Lora-SemiBold',
         fontSize: 22,
         fontWeight: 600,
     },
     viewAll: {
-        fontFamily: 'LoraSemiBold',
+        fontFamily: 'Lora-Medium',
         color: "#D3072B",
         fontSize: 14,
         fontWeight: 500,

@@ -15,10 +15,13 @@ import Carouselimg from './scr/components/Carouselimg';
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'Lora-Regular': require('./assets/fonts/LoraRegular.ttf'),
-    'Lora-Bold': require('./assets/fonts/LoraSemiBold.ttf'),
-    'DMSans-Regular': require('./assets/fonts/DMSans-Regular.ttf'),
-    'DMSans-Bold': require('./assets/fonts/DMSansBold.ttf'),
+    "Lora-Regular": require("./assets/fonts/Lora-Bold.ttf"),
+    "Lora-Regular": require("./assets/fonts/Lora-Medium.ttf"),
+    "Lora-SemiBold": require("./assets/fonts/Lora-SemiBold.ttf"),
+    "DMSans-Regular": require("./assets/fonts/DMSans-Bold.ttf"),
+    "DMSans-Bold": require("./assets/fonts/DMSans-Regular.ttf"),
+    "DMSans-Bold": require("./assets/fonts/DMSans-SemiBold.ttf"),
+    "DMSans-Bold": require("./assets/fonts/DMSans-Medium.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -27,7 +30,10 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.safeArea} edges={["bottom"]}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar
+        style="dark"
+        backgroundColor="transparent"
+      />
 
       <ScrollView>
         <View>
@@ -51,3 +57,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+

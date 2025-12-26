@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         paddingBottom: 13,
         fontSize: 14,
         fontWeight: 600,
-        fontFamily: 'DMSansBold',
+        fontFamily: 'DMSans-SemiBold',
     },
 
     topRow: {

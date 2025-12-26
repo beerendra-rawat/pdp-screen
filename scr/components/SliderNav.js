@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   text: {
-    fontFamily: 'DMSans-Regular',
+    fontFamily: 'DMSans-Medium.ttf',
     fontSize: 16,
     fontWeight: 500,
   },
