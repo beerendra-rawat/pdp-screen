@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function RestaurantImage() {
     return (
@@ -6,9 +6,9 @@ export default function RestaurantImage() {
 
             <View style={styles.header}>
                 <Text style={styles.title}>Restaurant Photos</Text>
-                <Pressable>
+                <TouchableOpacity>
                     <Text style={styles.viewAll}>View All</Text>
-                </Pressable>
+                </TouchableOpacity>
             </View>
 
             <View style={styles.mainRow}>
@@ -31,7 +31,7 @@ export default function RestaurantImage() {
                 <Image source={require("../../assets/img/img7.png")} style={styles.bottomImage} />
                 <Image source={require("../../assets/img/img8.png")} style={styles.bottomImage} />
             </View>
-            
+
         </View>
     );
 }
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         paddingTop: 36,
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
     },
     title: {
         fontFamily: 'Lora-SemiBold',
@@ -60,18 +61,22 @@ const styles = StyleSheet.create({
     mainRow: {
         paddingTop: 24,
         flexDirection: "row",
-        justifyContent: 'space-between',
+        gap: 12,
     },
     bigImage: {
         width: 247,
         height: 247,
+        flex: 3,
+        aspectRatio: 1, 
         borderRadius: 12,
     },
     smallImage: {
+        marginLeft: 12,
         width: 73,
         height: 73,
         borderRadius: 12,
         marginBottom: 12,
+        aspectRatio: 1,
     },
     bottomRow: {
         flexDirection: "row",

@@ -38,7 +38,7 @@ export default function Carouselimg() {
     }, [index]);
 
     return (
-        <View>
+        <View style={styles.carouselContainer}>
             <FlatList
                 ref={flatListRef}
                 data={images}
@@ -56,6 +56,9 @@ export default function Carouselimg() {
                     setIndex(i);
                 }}
             />
+
+            <View style={styles.topOverlay} />
+            <View style={styles.bottomOverlay} />
 
             <View style={styles.indicator}>
                 {images.map((_, i) => (
@@ -169,4 +172,28 @@ const styles = StyleSheet.create({
         height: 36,
         borderRadius: 6,
     },
+
+
+    carouselContainer: {
+        position: "relative",
+    },
+
+    topOverlay: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 80,
+        backgroundColor: "rgba(0,0,0,0.35)",
+    },
+
+    bottomOverlay: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 100,
+        backgroundColor: "rgba(0,0,0,0.35)",
+    },
+
 });
