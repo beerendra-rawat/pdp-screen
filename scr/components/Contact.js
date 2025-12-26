@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 84,
     left: 150,
-    width: 19,
-    height: 19,
+    width: 60,
+    height: 60,
   },
   btn: {
     width: 127,

@@ -1,48 +1,77 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function SliderNav() {
+const tabs = [
+  "The Verdict",
+  "Photos",
+  "Restaurant Contact",
+  "Comments",
+  "Experience",
+];
+
+export default function SliderNav({ activeTab, setActiveTab }) {
   return (
     <View style={styles.container}>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      >
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.row}>
-          {[
-            "The Verdict",
-            "Photos",
-            "Restaurant Contact",
-            "Comments",
-            "Experience",
-          ].map((item, index) => (
-            <View key={index} style={styles.item}>
-              <Text style={styles.text} numberOfLines={1}>
-                {item}
-              </Text>
-            </View>
-          ))}
+          {tabs.map((item, index) => {
+            const isActive = activeTab === index;
+
+            return (
+              <TouchableOpacity
+                key={index}
+                style={styles.item}
+                onPress={() => setActiveTab(index)}
+              >
+                <Text
+                  style={[
+                    styles.text,
+                    isActive && styles.activeText,
+                  ]}
+                  numberOfLines={1}
+                >
+                  {item}
+                </Text>
+
+                {isActive && <View style={styles.activeLine} />}
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </ScrollView>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 12,
+    backgroundColor: "#fff",
+    paddingVertical: 8,
   },
+
   row: {
     flexDirection: "row",
     paddingHorizontal: 16,
   },
+
   item: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    marginRight: 12,
+    marginRight: 20,
+    alignItems: "center",
   },
+
   text: {
-    fontFamily: 'DMSans-Medium.ttf',
     fontSize: 16,
-    fontWeight: 500,
+    color: "#111",
+    fontFamily: "DMSans-Regular",
+  },
+
+  activeText: {
+    fontFamily: "DMSans-Bold",
+  },
+
+  activeLine: {
+    marginTop: 6,
+    height: 3,
+    width: "100%",
+    backgroundColor: "red",
+    borderRadius: 2,
   },
 });

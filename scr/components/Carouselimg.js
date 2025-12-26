@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         paddingRight: 16,
         paddingTop: 8,
         paddingBottom: 13,
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: 600,
         fontFamily: 'DMSans-SemiBold',
     },
