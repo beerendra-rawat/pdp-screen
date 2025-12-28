@@ -11,25 +11,34 @@ export default function RestaurantImage() {
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.mainRow}>
-                <View>
-                    <Image
-                        source={require("../../assets/img/img8.png")}
-                        style={styles.bigImage}
+            <View style={styles.topRow}>
+                <View >
+                    <Image source={require("../../assets/img/img8.png")}
+                        style={styles.bigImg}
                     />
                 </View>
-                <View>
-                    <Image source={require("../../assets/img/img2.png")} style={styles.smallImage} />
-                    <Image source={require("../../assets/img/img3.png")} style={styles.smallImage} />
-                    <Image source={require("../../assets/img/img4.png")} style={styles.smallImage} />
+                <View style={styles.rightImgCol}>
+                    <Image source={require("../../assets/img/img3.png")}
+                        style={styles.rightimg}
+                    />
+                    <Image source={require("../../assets/img/img6.png")}
+                        style={styles.rightimg}
+                    />
+                    <Image source={require("../../assets/img/img5.png")}
+                        style={styles.rightimg}
+                    />
                 </View>
             </View>
 
-            <View style={styles.bottomRow}>
-                <Image source={require("../../assets/img/img5.png")} style={styles.bottomImage} />
-                <Image source={require("../../assets/img/img6.png")} style={styles.bottomImage} />
-                <Image source={require("../../assets/img/img7.png")} style={styles.bottomImage} />
-                <Image source={require("../../assets/img/img8.png")} style={styles.bottomImage} />
+            <View style={styles.BottomRow}>
+                <Image source={require("../../assets/img/img7.png")}
+                    style={styles.BottomImg} />
+                <Image source={require("../../assets/img/img2.png")}
+                    style={styles.BottomImg} />
+                <Image source={require("../../assets/img/img1.png")}
+                    style={styles.BottomImg} />
+                <Image source={require("../../assets/img/img4.png")}
+                    style={styles.BottomImg} />
             </View>
 
         </View>
@@ -58,36 +67,34 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 500,
     },
-    mainRow: {
+    topRow: {
         paddingTop: 24,
-        flexDirection: "row",
-        gap: 12,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
-    bigImage: {
-        width: 247,
+    bigImg: {
+        borderRadius: 12,
+        width: 225,
         height: 247,
-        flex: 3,
-        aspectRatio: 1, 
-        borderRadius: 12,
     },
-    smallImage: {
-        marginLeft: 12,
+    rightImgCol: {
+        justifyContent: 'space-between',
+    },
+    rightimg: {
+        marginLeft: 16,
+        borderRadius: 12,
         width: 73,
-        height: 73,
-        borderRadius: 12,
-        marginBottom: 12,
-        aspectRatio: 1,
+        height: 73
     },
-    bottomRow: {
-        flexDirection: "row",
-        justifyContent: "space-between",
+    BottomRow: {
         paddingTop: 12,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
-    bottomImage: {
+    BottomImg: {
         width: 73,
         height: 73,
         borderRadius: 12,
-        marginBottom: 36,
-    },
+    }
 });
 

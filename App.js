@@ -37,6 +37,7 @@ export default function App() {
       <StatusBar
         style="dark"
         backgroundColor="transparent"
+        animated={true}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Carouselimg />
