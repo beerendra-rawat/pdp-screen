@@ -4,7 +4,7 @@ export default function CustomeModal({ visible, onClose }) {
         <Modal visible={visible} transparent animationType="slide">
             <View style={styles.modalBackground}>
                 <View style={styles.modalBox}>
-                    <Text>Hello! This is Pressable Button</Text>
+                    <Text>Hello! You press write your comment button.</Text>
                     <Button onPress={onClose} title="Close" />
                 </View>
             </View>

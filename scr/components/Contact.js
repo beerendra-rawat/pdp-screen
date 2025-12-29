@@ -1,4 +1,5 @@
 import { Text, View, StyleSheet, Image, Pressable, Linking } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Contact() {
 
@@ -8,52 +9,57 @@ export default function Contact() {
   }
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#111111", "#2B2B2B"]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+    >
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <View style={styles.mapWrapper}>
+            <Image style={styles.map} source={require("../../assets/img/map.png")} />
+            <Image style={styles.locationStar} source={require("../../assets/img/pin.png")} />
+            <Pressable style={styles.btn}>
+              <Text style={styles.btnText} onPress={openDirection}>Get Directions</Text>
+              <Image style={styles.directionImg} source={require("../../assets/img/mapBtn.png")} />
+            </Pressable>
+          </View>
 
-      <View style={styles.card}>
-        <View style={styles.mapWrapper}>
-          <Image style={styles.map} source={require("../../assets/img/map.png")} />
-          <Image style={styles.locationStar} source={require("../../assets/img/pin.png")} />
-          <Pressable style={styles.btn}>
-            <Text style={styles.btnText} onPress={openDirection}>Get Directions</Text>
-            <Image style={styles.directionImg} source={require("../../assets/img/mapBtn.png")} />
-          </Pressable>
+          <Text style={styles.text}>Unit-1, Process House, S.B. Road, Kamala Mills,
+            Near Radio Mirchi Office Lower, Parel, Mumbai, Maharashtra - 400013
+          </Text>
         </View>
 
-        <Text style={styles.text}>Unit-1, Process House, S.B. Road, Kamala Mills,
-          Near Radio Mirchi Office Lower, Parel, Mumbai, Maharashtra - 400013
-        </Text>
+        <View style={styles.contact}>
+          <View style={styles.contactRow}>
+            <Image style={styles.icon} source={require("../../assets/img/browser.png")} />
+            <Text style={styles.textCon}>https://thebombaycanteen.com</Text>
+          </View>
+          <View style={styles.contactRow}>
+            <Image source={require("../../assets/img/call.png")} />
+            <Text style={styles.textCon}>+91-8448765432</Text>
+          </View>
+          <View style={styles.contactRow}>
+            <Image source={require("../../assets/img/insta.png")} />
+            <Text style={styles.textCon}>thebombaycanteen</Text>
+          </View>
+        </View>
+
       </View>
-
-      <View style={styles.contact}>
-        <View style={styles.contactRow}>
-          <Image style={styles.icon} source={require("../../assets/img/browser.png")} />
-          <Text style={styles.textCon}>https://thebombaycanteen.com</Text>
-        </View>
-        <View style={styles.contactRow}>
-          <Image source={require("../../assets/img/call.png")} />
-          <Text style={styles.textCon}>+91-8448765432</Text>
-        </View>
-        <View style={styles.contactRow}>
-          <Image source={require("../../assets/img/insta.png")} />
-          <Text style={styles.textCon}>thebombaycanteen</Text>
-        </View>
-      </View>
-
-    </View>
+    </LinearGradient>
   )
+
 }
 
 const styles = StyleSheet.create({
   container: {
     paddingLeft: 24,
     paddingRight: 24,
-    backgroundColor: '#2B2B2B',
   },
   card: {
     marginTop: 36,
     borderRadius: 12,
-    backgroundColor: "#11111199",
+    backgroundColor: "rgba(11, 22, 50, 0.6)",
   },
   mapWrapper: {
     position: "relative",
@@ -102,6 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 400,
     color: '#FFFFFF',
+    textAlign: 'left',
   },
   contact: {
     paddingTop: 36,
@@ -114,8 +121,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderWidth: 1,
-    borderRadius: 12,
-    borderColor: 'white',
+    borderRadius: 6,
+    borderColor: "#FFFFFF14",
   },
   icon: {
     width: 14,
@@ -131,19 +138,19 @@ const styles = StyleSheet.create({
 
 
   outerCircle: {
-  position: "absolute",
-  width: 120,
-  height: 120,
-  borderRadius: 60,
-  backgroundColor: "rgba(255, 0, 0, 0.15)",
-},
+    position: "absolute",
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: "rgba(255, 0, 0, 0.15)",
+  },
 
-innerCircle: {
-  position: "absolute",
-  width: 80,
-  height: 80,
-  borderRadius: 40,
-  backgroundColor: "rgba(255, 0, 0, 0.25)",
-},
+  innerCircle: {
+    position: "absolute",
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: "rgba(255, 0, 0, 0.25)",
+  },
 
 })

@@ -48,7 +48,7 @@ export default function BombeCanteen() {
 
 
       </View>
-      <View style={styles.divider} />
+      <View style={styles.dividerFull} />
     </View>
   );
 }
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lora-SemiBold',
     paddingTop: 24,
     fontSize: 24,
-    fontWeight: "600",
+    fontWeight: 600,
     lineHeight: 30,
     color: "#111111",
   },
@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans-Regular',
     paddingTop: 4,
     fontSize: 16,
-    fontWeight: "400",
+    fontWeight: 400,
     lineHeight: 22,
-    color: "#11111199",
+    color: "#111111",
   },
   divider: {
     height: 1,
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   infoRow: {
-    paddingTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
   },
@@ -93,22 +92,28 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     fontFamily: 'DMSans-Regular',
     fontSize: 12,
-    fontWeight: "400",
-    color: "#000",
+    fontWeight: 400,
+    color: "#111111",
   },
   description: {
-    paddingTop: 20,
     fontFamily: 'DMSans-Regular',
     fontSize: 16,
     fontWeight: "400",
-    color: "#777",
+    color: "rgba(17, 17, 17, 0.6)",
     lineHeight: 26,
+    textAlign: 'left',
   },
   showMore: {
     fontFamily: 'Lora-Medium',
     paddingTop: 8,
     fontSize: 14,
-    fontWeight: "500",
-    color: "#000",
+    fontWeight: 500,
+    color: "#111111",
+  },
+  dividerFull: {
+    height: 1,
+    backgroundColor: "#e0e0e0",
+    marginTop: 30,
+    marginBottom: 12,
   },
 });

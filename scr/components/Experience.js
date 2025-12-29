@@ -12,74 +12,73 @@ import CustomeModal from "../util/CustomeModal";
 export default function Experience() {
   const [visible, setVisible] = useState(false)
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <View style={{ flex: 1 }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
 
-      <View style={styles.container}>
-        <Text style={styles.titleHeading}>Share your Experience</Text>
-        <Text style={styles.subTitle}>
-          Tell others what made The Bombay Canteen special and why it’s worth
-          their next visit.
-        </Text>
+        <View style={styles.container}>
+          <Text style={styles.titleHeading}>Share your Experience</Text>
+          <Text style={styles.subTitle}>
+            Tell others what made The Bombay Canteen special and why it’s worth
+            their next visit.
+          </Text>
 
-        <Pressable style={styles.btn} onPress={() => setVisible(true)}>
-          <Text style={styles.btnText}>Write Your Comments</Text>
-        </Pressable>
-      </View>
+          <Pressable style={styles.btn} onPress={() => setVisible(true)}>
+            <Text style={styles.btnText}>Write Your Comments</Text>
+          </Pressable>
 
-      <View style={styles.section}>
+          <CustomeModal
+            visible={visible}
+            onClose={() => setVisible(false)}
+          />
+        </View>
 
-        <Text style={styles.sHeading}>Nearby Restaurants</Text>
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          snapToInterval={260}
-          decelerationRate="fast"
-        >
-          <View style={styles.card}>
-            <Image
-              style={styles.image}
-              source={require("../../assets/img/img9.png")}
-            />
-            <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
-            <View style={styles.ratingRow}>
-              <Text style={styles.rating}>4.0</Text>
-              <View style={styles.imgBg}>
-                <Image style={styles.ratingImg} source={require("../../assets/img/starFilled.png")} />
+        <View style={styles.section}>
+
+          <Text style={styles.sHeading}>Nearby Restaurants</Text>
+          <ScrollView
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            snapToInterval={260}
+            decelerationRate="fast"
+          >
+            <View style={styles.card}>
+              <Image
+                style={styles.image}
+                source={require("../../assets/img/img9.png")}
+              />
+              <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
+              <View style={styles.ratingRow}>
+                <Text style={styles.rating}>4.0</Text>
+                <View style={styles.imgBg}>
+                  <Image style={styles.ratingImg} source={require("../../assets/img/starFilled.png")} />
+                </View>
+                <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
               </View>
-              <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
+              <Text style={styles.temp}>Casual Dining</Text>
             </View>
-            <Text style={styles.temp}>Casual Dining</Text>
-          </View>
 
-          <View style={styles.card}>
-            <Image
-              style={styles.image}
-              source={require("../../assets/img/nearResto.png")}
-            />
-            <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
-            <View style={styles.ratingRow}>
-              <Text style={styles.rating}>4.0</Text>
-              <View style={styles.imgBg}>
-                <Image style={styles.ratingImg} source={require("../../assets/img/starFilled.png")} />
+            <View style={styles.card}>
+              <Image
+                style={styles.image}
+                source={require("../../assets/img/nearResto.png")}
+              />
+              <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
+              <View style={styles.ratingRow}>
+                <Text style={styles.rating}>4.0</Text>
+                <View style={styles.imgBg}>
+                  <Image style={styles.ratingImg} source={require("../../assets/img/starFilled.png")} />
+                </View>
+                <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
               </View>
-              <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
+              <Text style={styles.temp}>Casual Dining</Text>
             </View>
-            <Text style={styles.temp}>Casual Dining</Text>
-          </View>
 
-        </ScrollView>
+          </ScrollView>
+        </View>
+      </ScrollView>
 
-        <Pressable style={styles.btn} onPress={() => setVisible(true)}>
-          <Text style={styles.btnText}>Reserve a Table</Text>
-        </Pressable>
-
-        <CustomeModal
-          visible={visible}
-          onClose={() => setVisible(false)}
-        />
-      </View>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -102,13 +101,14 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     color: "#555",
     paddingTop: 8,
+    textAlign: 'justify'
   },
   btn: {
     marginTop: 24,
     marginBottom: 36,
     backgroundColor: "#000",
     paddingVertical: 16,
-    borderRadius: 12,
+    borderRadius: 8,
   },
   btnText: {
     color: "#fff",
@@ -184,5 +184,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 400,
     fontFamily: 'DMSans-Regular',
-  }
+  },
+
+  fixedBtn: {
+    position: "absolute",
+    bottom: 24,
+    left: 24,
+    right: 24,
+    backgroundColor: "#000",
+    paddingVertical: 16,
+    borderRadius: 12,
+    zIndex: 10,
+  },
+
 });

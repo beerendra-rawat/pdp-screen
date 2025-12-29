@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     paddingTop: 36,
     fontSize: 22,
     fontWeight: 600,
+    color: "#111111",
   },
   card: {
     paddingTop: 24,
@@ -126,7 +127,10 @@ const styles = StyleSheet.create({
   },
   ratingimg: {
     marginLeft: 4,
-  },
+    width: 62,
+    height: 16,
+    borderRadius: 20,
+    },
   tag: {
     flexDirection: 'row',
   },
@@ -141,9 +145,11 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   commentText: {
+    color: "rgba(17, 17, 17, 0.6)",
     fontSize: 16,
     fontWeight: 400,
     fontFamily: 'DMSans-Regular',
+    textAlign: 'justify',
   },
   imgRow: {
     marginTop: 16,
@@ -156,6 +162,7 @@ const styles = StyleSheet.create({
     height: 73,
   },
   date: {
+    color: "rgba(17, 17, 17, 0.6)",
     marginTop: 16,
     fontSize: 12,
     fontWeight: 500,
@@ -172,8 +179,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 8,
     alignItems: 'center',
+    borderColor: "#11111133"
   },
   btnText: {
     paddingLeft: 16,

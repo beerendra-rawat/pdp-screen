@@ -1,4 +1,5 @@
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { useState } from "react";
 
 const tabs = [
   "The Verdict",
@@ -8,19 +9,34 @@ const tabs = [
   "Experience",
 ];
 
-export default function SliderNav({ activeTab, setActiveTab }) {
+export default function SliderNav({ onTabPress, refs }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const sectionRefs = [
+    refs.verdictRef,
+    refs.photoRef,
+    refs.contactRef,
+    refs.commentRef,
+    refs.experienceRef,
+  ];
+
+  const handlePress = (index) => {
+    setActiveIndex(index);
+    onTabPress(sectionRefs[index]);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.row}>
           {tabs.map((item, index) => {
-            const isActive = activeTab === index;
+            const isActive = activeIndex === index;
 
             return (
               <TouchableOpacity
                 key={index}
                 style={styles.item}
-                onPress={() => setActiveTab(index)}
+                onPress={() => handlePress(index)}
               >
                 <Text
                   style={[
@@ -43,35 +59,33 @@ export default function SliderNav({ activeTab, setActiveTab }) {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
-    paddingVertical: 8,
+    backgroundColor: "#FFFFFF",
   },
-
   row: {
     flexDirection: "row",
-    paddingHorizontal: 16,
+    paddingHorizontal: 24,
   },
-
   item: {
     marginRight: 20,
     alignItems: "center",
   },
-
   text: {
     fontSize: 16,
+    fontWeight: 400,
     color: "#111",
-    fontFamily: "DMSans-Regular",
+    fontFamily: "DMSans-Medium",
   },
-
+  activeLine: {
+    marginTop: 6,
+    height: 4,
+    width: "100%",
+    backgroundColor: "#D3072B",
+    borderRadius: 2,
+  },
   activeText: {
+    fontSize: 16,
+    fontWeight: 500,
     fontFamily: "DMSans-Bold",
   },
 
-  activeLine: {
-    marginTop: 6,
-    height: 3,
-    width: "100%",
-    backgroundColor: "red",
-    borderRadius: 2,
-  },
 });

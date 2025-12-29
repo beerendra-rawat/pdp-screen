@@ -7,7 +7,9 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
+    ImageBackground,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("window");
 
@@ -25,12 +27,10 @@ export default function Carouselimg() {
     useEffect(() => {
         const timer = setInterval(() => {
             const next = (index + 1) % images.length;
-
             flatListRef.current?.scrollToIndex({
                 index: next,
                 animated: true,
             });
-
             setIndex(next);
         }, 3000);
 
@@ -47,28 +47,39 @@ export default function Carouselimg() {
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(_, i) => i.toString()}
                 renderItem={({ item }) => (
-                    <Image source={item} style={styles.image} />
+
+                    <ImageBackground source={item} style={styles.image} resizeMode="cover">
+                        <LinearGradient
+                            colors={["rgba(17,17,17,0.6)", "transparent"]}
+                            style={styles.topFade}
+                        />
+                        <LinearGradient
+                            colors={["transparent", "rgba(17,17,17,0.6)"]}
+                            style={styles.bottomFade}
+                        />
+                        <LinearGradient
+                            colors={["rgba(17,17,17,0.6)", "transparent"]}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            style={styles.leftFade}
+                        />
+                        <LinearGradient
+                            colors={["transparent", "rgba(17,17,17,0.6)"]}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            style={styles.rightFade}
+                        />
+                    </ImageBackground>
                 )}
                 onMomentumScrollEnd={(e) => {
-                    const i = Math.round(
-                        e.nativeEvent.contentOffset.x / width
-                    );
+                    const i = Math.round(e.nativeEvent.contentOffset.x / width);
                     setIndex(i);
                 }}
             />
 
-            <View style={styles.topOverlay} />
-            <View style={styles.bottomOverlay} />
-
             <View style={styles.indicator}>
                 {images.map((_, i) => (
-                    <View
-                        key={i}
-                        style={[
-                            styles.dot,
-                            index === i && styles.activeDot,
-                        ]}
-                    />
+                    <View key={i} style={[styles.dot, index === i && styles.activeDot]} />
                 ))}
             </View>
 
@@ -77,31 +88,77 @@ export default function Carouselimg() {
             </TouchableOpacity>
 
             <View style={styles.topRow}>
-                <View style={styles.leftBtn}>
-                    <TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.leftBtn}>
                         <Image source={require("../../assets/img/leftArrow.png")} />
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
+
                 <View style={styles.rightBtn}>
                     <TouchableOpacity>
-                        <Image source={require("../../assets/img/translate.png")} />
+                        <View style={styles.rightSmlBtn}>
+                            <Image source={require("../../assets/img/translate.png")} />
+                        </View>
                     </TouchableOpacity>
+
                     <TouchableOpacity>
-                        <Image source={require("../../assets/img/heart.png")} />
+                        <View style={styles.rightSmlBtn}>
+                            <Image source={require("../../assets/img/heart.png")} />
+                        </View>
                     </TouchableOpacity>
+
                     <TouchableOpacity>
-                        <Image source={require("../../assets/img/share.png")} />
+                        <View style={styles.rightSmlBtn}>
+                            <Image source={require("../../assets/img/share.png")} />
+                        </View>
                     </TouchableOpacity>
                 </View>
+
             </View>
         </View>
     );
 }
+
 const styles = StyleSheet.create({
+    carouselContainer: {
+        position: "relative",
+    },
+
     image: {
-        width: width,
-        height: 260,
-        resizeMode: "cover",
+        width,
+        height: 332,
+    },
+
+    topFade: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 80,
+    },
+
+    bottomFade: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 80,
+    },
+
+    leftFade: {
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        width: 80,
+    },
+
+    rightFade: {
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        right: 0,
+        width: 80,
     },
 
     indicator: {
@@ -109,11 +166,9 @@ const styles = StyleSheet.create({
         bottom: 24,
         left: 24,
         flexDirection: "row",
-        justifyContent: 'space-between',
     },
 
     dot: {
-        marginTop: 24,
         width: 8,
         height: 8,
         borderRadius: 4,
@@ -122,28 +177,26 @@ const styles = StyleSheet.create({
     },
 
     activeDot: {
-        width: 22,
-        backgroundColor: "red",
+        width: 40,
+        height: 8,
+        borderRadius: 8,
+        backgroundColor: "#D3072B",
     },
 
     viewAll: {
-        backgroundColor: '#111111B8',
-        borderRadius: 6,
-        width: 114,
         position: "absolute",
         bottom: 10,
         right: 24,
+        backgroundColor: "#111111B8",
+        borderRadius: 6,
     },
 
     btnText: {
-        color: '#ffffff',
-        paddingLeft: 16,
-        paddingRight: 16,
-        paddingTop: 8,
-        paddingBottom: 13,
-        fontSize: 13,
-        fontWeight: 600,
-        fontFamily: 'DMSans-SemiBold',
+        color: "#FFFFFF",
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        fontSize: 14,
+        fontWeight: "600",
     },
 
     topRow: {
@@ -156,44 +209,26 @@ const styles = StyleSheet.create({
     },
 
     leftBtn: {
-        backgroundColor: '#111111B8',
-        padding: 13,
+        backgroundColor: "#11111166",
         width: 36,
         height: 36,
         borderRadius: 6,
+        justifyContent: "center",
+        alignItems: "center",
     },
 
     rightBtn: {
         flexDirection: "row",
-        gap: 12,
-        backgroundColor: '#111111B8',
-        padding: 13,
-        width: 116,
+        backgroundColor: "#11111166",
+        paddingHorizontal: 12,
         height: 36,
         borderRadius: 6,
+        alignItems: "center",
     },
-
-
-    carouselContainer: {
-        position: "relative",
-    },
-
-    topOverlay: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 80,
-        backgroundColor: "rgba(0,0,0,0.35)",
-    },
-
-    bottomOverlay: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: 100,
-        backgroundColor: "rgba(0,0,0,0.35)",
-    },
-
+    rightSmlBtn: {
+        width: 36,
+        height: 36,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });

@@ -1,100 +1,108 @@
-import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
+
+const { width } = Dimensions.get("window");
+const GAP = 16;
+const CONTAINER_PADDING = 48;
+const AVAILABLE_WIDTH = width - CONTAINER_PADDING - GAP;
 
 export default function RestaurantImage() {
-    return (
-        <View style={styles.container}>
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Restaurant Photos</Text>
+        <TouchableOpacity>
+          <Text style={styles.viewAll}>View All</Text>
+        </TouchableOpacity>
+      </View>
 
-            <View style={styles.header}>
-                <Text style={styles.title}>Restaurant Photos</Text>
-                <TouchableOpacity>
-                    <Text style={styles.viewAll}>View All</Text>
-                </TouchableOpacity>
-            </View>
+      <View style={styles.topRow}>
+        <Image
+          source={require("../../assets/img/img8.png")}
+          style={styles.bigImg}
+        />
 
-            <View style={styles.topRow}>
-                <View >
-                    <Image source={require("../../assets/img/img8.png")}
-                        style={styles.bigImg}
-                    />
-                </View>
-                <View style={styles.rightImgCol}>
-                    <Image source={require("../../assets/img/img3.png")}
-                        style={styles.rightimg}
-                    />
-                    <Image source={require("../../assets/img/img6.png")}
-                        style={styles.rightimg}
-                    />
-                    <Image source={require("../../assets/img/img5.png")}
-                        style={styles.rightimg}
-                    />
-                </View>
-            </View>
-
-            <View style={styles.BottomRow}>
-                <Image source={require("../../assets/img/img7.png")}
-                    style={styles.BottomImg} />
-                <Image source={require("../../assets/img/img2.png")}
-                    style={styles.BottomImg} />
-                <Image source={require("../../assets/img/img1.png")}
-                    style={styles.BottomImg} />
-                <Image source={require("../../assets/img/img4.png")}
-                    style={styles.BottomImg} />
-            </View>
-
+        <View style={styles.rightImgCol}>
+          <Image source={require("../../assets/img/img3.png")} style={styles.rightimg} />
+          <Image source={require("../../assets/img/img6.png")} style={styles.rightimg} />
+          <Image source={require("../../assets/img/img5.png")} style={styles.rightimg} />
         </View>
-    );
-}
-const styles = StyleSheet.create({
-    container: {
-        paddingLeft: 24,
-        paddingRight: 24,
-        backgroundColor: "#fff",
-    },
-    header: {
-        paddingTop: 36,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    title: {
-        fontFamily: 'Lora-SemiBold',
-        fontSize: 22,
-        fontWeight: 600,
-    },
-    viewAll: {
-        fontFamily: 'Lora-Medium',
-        color: "#D3072B",
-        fontSize: 14,
-        fontWeight: 500,
-    },
-    topRow: {
-        paddingTop: 24,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    bigImg: {
-        borderRadius: 12,
-        width: 225,
-        height: 247,
-    },
-    rightImgCol: {
-        justifyContent: 'space-between',
-    },
-    rightimg: {
-        marginLeft: 16,
-        borderRadius: 12,
-        width: 73,
-        height: 73
-    },
-    BottomRow: {
-        paddingTop: 12,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    BottomImg: {
-        width: 73,
-        height: 73,
-        borderRadius: 12,
-    }
-});
+      </View>
 
+      <View style={styles.BottomRow}>
+        <Image source={require("../../assets/img/img7.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/img2.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/img1.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/img4.png")} style={styles.BottomImg} />
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 24,
+    backgroundColor: "#ffff",
+  },
+
+  header: {
+    paddingTop: 36,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  title: {
+    fontFamily: "Lora-SemiBold",
+    fontSize: 22,
+    fontWeight: 600,
+  },
+
+  viewAll: {
+    fontFamily: "Lora-Medium",
+    color: "#D3072B",
+    fontSize: 14,
+    fontWeight: 500,
+  },
+
+  topRow: {
+    paddingTop: 24,
+    flexDirection: "row",
+  },
+
+  bigImg: {
+    width: AVAILABLE_WIDTH * 0.75,
+    height: 247,
+    borderRadius: 12,
+  },
+
+  rightImgCol: {
+    marginLeft: GAP,
+    justifyContent: "space-between",
+  },
+
+  rightimg: {
+    width: AVAILABLE_WIDTH * 0.25, 
+    height: 73,
+    borderRadius: 12,
+  },
+
+  BottomRow: {
+    paddingTop: 12,
+    paddingBottom: 36,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  BottomImg: {
+    width: (width - CONTAINER_PADDING - 12) / 4,
+    height: 73,
+    borderRadius: 12,
+  },
+});
