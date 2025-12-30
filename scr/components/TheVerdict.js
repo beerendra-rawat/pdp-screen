@@ -22,8 +22,8 @@ export default function TheVerdict() {
           key={i}
           source={
             i <= rating
-              ? require("../../assets/img/starFilled.png")
-              : require("../../assets/img/starEmpty.png")
+              ? require("../../assets/img/Star.png")
+              : require("../../assets/img/Star-2.png")
           }
           style={styles.star}
         />
@@ -58,7 +58,7 @@ export default function TheVerdict() {
             </View>
             <Image
               style={styles.image}
-              source={require("../../assets/img/visitor3.png")}
+              source={require("../../assets/img/Dr.png")}
             />
           </View>
 
@@ -75,7 +75,7 @@ export default function TheVerdict() {
             <Text style={styles.footerText}>20 Oct, 2025</Text>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <TouchableOpacity>
-                <Image source={require("../../assets/img/like.png")} />
+                <Image style={styles.like} source={require("../../assets/img/like.png")} />
               </TouchableOpacity>
               <Text style={styles.footerText}> Found this helpful</Text>
             </View>
@@ -156,6 +156,10 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  like: {
+    width: 20,
+    height: 20,
   },
   footerText: {
     fontFamily: 'Lora-Medium',

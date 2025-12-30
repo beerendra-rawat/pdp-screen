@@ -24,22 +24,22 @@ export default function RestaurantImage() {
 
       <View style={styles.topRow}>
         <Image
-          source={require("../../assets/img/img8.png")}
+          source={require("../../assets/img/food1.png")}
           style={styles.bigImg}
         />
 
         <View style={styles.rightImgCol}>
-          <Image source={require("../../assets/img/img3.png")} style={styles.rightimg} />
-          <Image source={require("../../assets/img/img6.png")} style={styles.rightimg} />
-          <Image source={require("../../assets/img/img5.png")} style={styles.rightimg} />
+          <Image source={require("../../assets/img/food2.png")} style={styles.rightimg} />
+          <Image source={require("../../assets/img/food3.png")} style={styles.rightimg} />
+          <Image source={require("../../assets/img/food4.png")} style={styles.rightimg} />
         </View>
       </View>
 
       <View style={styles.BottomRow}>
-        <Image source={require("../../assets/img/img7.png")} style={styles.BottomImg} />
-        <Image source={require("../../assets/img/img2.png")} style={styles.BottomImg} />
-        <Image source={require("../../assets/img/img1.png")} style={styles.BottomImg} />
-        <Image source={require("../../assets/img/img4.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/food5.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/food6.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/food7.png")} style={styles.BottomImg} />
+        <Image source={require("../../assets/img/food8.png")} style={styles.BottomImg} />
       </View>
     </View>
   );

@@ -15,19 +15,19 @@ export default function BombeCanteen() {
 
         <View style={styles.infoRow}>
           <View style={styles.infoItem}>
-            <Image source={require("../../assets/img/Frame-4.png")} />
+            <Image source={require("../../assets/img/spoon.png")} style={styles.icons} />
             <Text style={styles.infoText}>Casual{"\n"}Dining</Text>
           </View>
           <View style={styles.infoItem}>
-            <Image source={require("../../assets/img/Frame.png")} />
+            <Image source={require("../../assets/img/spoon1.png")} style={styles.icons} />
             <Text style={styles.infoText}>Indian{"\n"}Cuisine</Text>
           </View>
           <View style={styles.infoItem}>
-            <Image source={require("../../assets/img/Frame-2.png")} />
+            <Image source={require("../../assets/img/RS.png")} style={styles.icons} />
             <Text style={styles.infoText}>₹ 2700{"\n"}Per Person</Text>
           </View>
           <View style={styles.infoItem}>
-            <Image source={require("../../assets/img/Frame-3.png")} />
+            <Image source={require("../../assets/img/colorStart.png")} style={styles.icons} />
             <Text style={styles.infoText}>4.0 Stars{"\n"}out of 5</Text>
           </View>
         </View>
@@ -86,6 +86,10 @@ const styles = StyleSheet.create({
   infoItem: {
     alignItems: "center",
     width: "22%",
+  },
+  icons: {
+    width: 32,
+    height: 32,
   },
   infoText: {
     textAlign: "center",

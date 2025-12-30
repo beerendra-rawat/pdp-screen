@@ -7,12 +7,12 @@ export default function VisitorComment() {
       <Text style={styles.heading}>Visitor Comments</Text>
 
       <View style={styles.card}>
-        <Image style={styles.img} source={require("../../assets/img/visitor2.png")} />
+        <Image style={styles.img} source={require("../../assets/img/visitor1.png")} />
         <View style={styles.nameRow}>
           <Text style={styles.nameText}>Darrell Steward</Text>
           <View style={styles.childRow}>
             <Text style={styles.ratingText}>4.0</Text>
-            <Image style={styles.ratingimg} source={require("../../assets/img/rating.png")} />
+            <Image style={styles.ratingimg} source={require("../../assets/img/allStart.png")} />
           </View>
         </View>
       </View>
@@ -31,14 +31,14 @@ export default function VisitorComment() {
       </View>
 
       <View style={styles.imgRow}>
-        <Image style={styles.foodImage} source={require("../../assets/img/food1.png")} />
-        <Image style={styles.foodImage} source={require("../../assets/img/food2.png")} />
-        <Image style={styles.foodImage} source={require("../../assets/img/food3.png")} />
+        <Image style={styles.foodImage} source={require("../../assets/img/food9.png")} />
+        <Image style={styles.foodImage} source={require("../../assets/img/food10.png")} />
+        <Image style={styles.foodImage} source={require("../../assets/img/food11.png")} />
 
         <View style={styles.moreImageWrapper}>
           <Image
             style={styles.foodImage}
-            source={require("../../assets/img/food4.png")}
+            source={require("../../assets/img/food12.png")}
           />
 
           <View style={styles.overlay}>
@@ -52,12 +52,12 @@ export default function VisitorComment() {
       <View style={styles.divider}></View>
 
       <View style={styles.card}>
-        <Image style={styles.img} source={require("../../assets/img/visitor1.png")} />
+        <Image style={styles.img} source={require("../../assets/img/visitor2.png")} />
         <View style={styles.nameRow}>
           <Text style={styles.nameText}>Mayank maggon</Text>
           <View style={styles.childRow}>
             <Text style={styles.ratingText}>4.0</Text>
-            <Image style={styles.ratingimg} source={require("../../assets/img/rating.png")} />
+            <Image style={styles.ratingimg} source={require("../../assets/img/allStart.png")} />
           </View>
         </View>
       </View>
@@ -192,6 +192,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Lora-Medium',
   },
   rightArrow: {
+    width: 18,
+    height: 12,
     marginRight: 20,
   },
 

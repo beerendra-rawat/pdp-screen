@@ -17,11 +17,11 @@ export default function Contact() {
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.mapWrapper}>
-            <Image style={styles.map} source={require("../../assets/img/map.png")} />
-            <Image style={styles.locationStar} source={require("../../assets/img/pin.png")} />
+            <Image style={styles.map} source={require("../../assets/img/mapBg.png")} />
+            <Image style={styles.locationStar} source={require("../../assets/img/mapDropIcon.png")} />
             <Pressable style={styles.btn}>
               <Text style={styles.btnText} onPress={openDirection}>Get Directions</Text>
-              <Image style={styles.directionImg} source={require("../../assets/img/mapBtn.png")} />
+              <Image style={styles.directionImg} source={require("../../assets/img/direction.png")} />
             </Pressable>
           </View>
 
@@ -36,11 +36,11 @@ export default function Contact() {
             <Text style={styles.textCon}>https://thebombaycanteen.com</Text>
           </View>
           <View style={styles.contactRow}>
-            <Image source={require("../../assets/img/call.png")} />
+            <Image style={styles.icon} source={require("../../assets/img/call.png")} />
             <Text style={styles.textCon}>+91-8448765432</Text>
           </View>
           <View style={styles.contactRow}>
-            <Image source={require("../../assets/img/insta.png")} />
+            <Image style={styles.icon} source={require("../../assets/img/insta.png")} />
             <Text style={styles.textCon}>thebombaycanteen</Text>
           </View>
         </View>
@@ -81,14 +81,13 @@ const styles = StyleSheet.create({
     height: 60,
   },
   btn: {
-    width: 127,
     height: 32,
     position: "absolute",
     right: 16,
     bottom: 16,
     backgroundColor: "#ffffff",
     paddingHorizontal: 16,
-    borderRadius: 12,
+    borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',
   },

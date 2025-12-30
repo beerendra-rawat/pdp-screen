@@ -45,13 +45,13 @@ export default function Experience() {
             <View style={styles.card}>
               <Image
                 style={styles.image}
-                source={require("../../assets/img/img9.png")}
+                source={require("../../assets/img/resto1.png")}
               />
               <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
               <View style={styles.ratingRow}>
                 <Text style={styles.rating}>4.0</Text>
                 <View style={styles.imgBg}>
-                  <Image style={styles.ratingImg} source={require("../../assets/img/starFilled.png")} />
+                  <Image style={styles.ratingImg} source={require("../../assets/img/Star.png")} />
                 </View>
                 <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
               </View>
@@ -61,13 +61,13 @@ export default function Experience() {
             <View style={styles.card}>
               <Image
                 style={styles.image}
-                source={require("../../assets/img/nearResto.png")}
+                source={require("../../assets/img/resto2.png")}
               />
               <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
               <View style={styles.ratingRow}>
                 <Text style={styles.rating}>4.0</Text>
                 <View style={styles.imgBg}>
-                  <Image style={styles.ratingImg} source={require("../../assets/img/starFilled.png")} />
+                  <Image style={styles.ratingImg} source={require("../../assets/img/Star.png")} />
                 </View>
                 <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
               </View>

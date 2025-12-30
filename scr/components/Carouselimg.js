@@ -14,10 +14,10 @@ import { LinearGradient } from "expo-linear-gradient";
 const { width } = Dimensions.get("window");
 
 const images = [
-    require("../../assets/img/banner1.png"),
-    require("../../assets/img/banner2.png"),
-    require("../../assets/img/banner1.png"),
-    require("../../assets/img/banner2.png"),
+    require("../../assets/img/crausal1.png"),
+    require("../../assets/img/crausal1.png"),
+    require("../../assets/img/crausal1.png"),
+    require("../../assets/img/crausal1.png"),
 ];
 
 export default function Carouselimg() {
@@ -90,26 +90,26 @@ export default function Carouselimg() {
             <View style={styles.topRow}>
                 <TouchableOpacity>
                     <View style={styles.leftBtn}>
-                        <Image source={require("../../assets/img/leftArrow.png")} />
+                        <Image style={styles.leftArrow} source={require("../../assets/img/leftArrow.png")} />
                     </View>
                 </TouchableOpacity>
 
                 <View style={styles.rightBtn}>
                     <TouchableOpacity>
                         <View style={styles.rightSmlBtn}>
-                            <Image source={require("../../assets/img/translate.png")} />
+                            <Image style={styles.translate} source={require("../../assets/img/translate.png")} />
                         </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity>
                         <View style={styles.rightSmlBtn}>
-                            <Image source={require("../../assets/img/heart.png")} />
+                            <Image style={styles.heart} source={require("../../assets/img/heart.png")} />
                         </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity>
                         <View style={styles.rightSmlBtn}>
-                            <Image source={require("../../assets/img/share.png")} />
+                            <Image style={styles.share} source={require("../../assets/img/share.png")} />
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -217,10 +217,27 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 
+    leftArrow:{
+        width: 12,
+        height: 9,
+    },
+    translate:{
+        width: 15,
+        height: 14,
+    },
+    heart:{
+        width: 16,
+        height: 14,
+    },
+    share:{
+        width: 14,
+        height: 14,
+    },
+
     rightBtn: {
         flexDirection: "row",
         backgroundColor: "#11111166",
-        paddingHorizontal: 12,
+        // paddingHorizontal: 12,
         height: 36,
         borderRadius: 6,
         alignItems: "center",

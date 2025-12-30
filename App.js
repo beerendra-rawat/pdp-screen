@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import BombeCanteen from "./scr/components/BombeCanteen";
 import RestaurantImage from "./scr/components/RestaurantImage";
@@ -29,6 +29,10 @@ export default function App() {
   const contactRef = useRef(null);
   const commentRef = useRef(null);
   const experienceRef = useRef(null);
+
+  const [isSticky, setIsSticky] = useState(false);
+  const stickyY = useRef(0);
+
 
   const [fontsLoaded] = useFonts({
     "Lora-Bold": require("./assets/fonts/Lora-Bold.ttf"),
@@ -54,7 +58,7 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={["bottom"]}>
+    <SafeAreaView style={styles.safeArea} edges={["Top", "bottom"]}>
       <StatusBar style="dark" backgroundColor="transparent" />
 
       <View style={styles.root}>
@@ -63,13 +67,25 @@ export default function App() {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContent}
           stickyHeaderIndices={[2]}
+          onScroll={(e) => {
+            const scrollY = e.nativeEvent.contentOffset.y;
+            setIsSticky(scrollY >= stickyY.current);
+          }}
+          scrollEventThrottle={16}
         >
           <Carouselimg />
 
           <BombeCanteen />
 
-
-          <View style={styles.stickyHeader}>
+          <View
+            style={[
+              styles.stickyHeader,
+              isSticky && styles.stickyHeaderActive,
+            ]}
+            onLayout={(e) => {
+              stickyY.current = e.nativeEvent.layout.y;
+            }}
+          >
             <SliderNav
               onTabPress={scrollToSection}
               refs={{
@@ -81,6 +97,7 @@ export default function App() {
               }}
             />
           </View>
+
 
           <View ref={verdictRef}>
             <TheVerdict />
@@ -140,6 +157,9 @@ const styles = StyleSheet.create({
   stickyHeader: {
     backgroundColor: "#fff",
     zIndex: 100,
+  },
+
+  stickyHeaderActive: {
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  }
+  },
 });
