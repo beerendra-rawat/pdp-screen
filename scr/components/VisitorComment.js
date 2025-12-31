@@ -1,107 +1,130 @@
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
+import commentsData from "../data/Comments.json";
+
+const images = {
+  visitor1: require("../../assets/img/visitor1.png"),
+  visitor2: require("../../assets/img/visitor2.png"),
+  food9: require("../../assets/img/food9.png"),
+  food10: require("../../assets/img/food10.png"),
+  food11: require("../../assets/img/food11.png"),
+  food12: require("../../assets/img/food12.png"),
+  starFilled: require("../../assets/img/starFilled.png"),
+  starEmpty: require("../../assets/img/starEmpty.png"),
+  rightArrow: require("../../assets/img/rightArrow.png"),
+};
+
+const MAX_STARS = 5;
 
 export default function VisitorComment() {
+
+  const renderStars = (rating) => {
+    let stars = [];
+    for (let i = 1; i <= MAX_STARS; i++) {
+      stars.push(
+        <Image
+          key={i}
+          source={
+            i <= rating
+              ? require("../../assets/img/starFilled.png")
+              : require("../../assets/img/starEmpty.png")
+          }
+          style={styles.star}
+        />
+      );
+    }
+    return stars;
+  };
+
   return (
     <View style={styles.container}>
-
       <Text style={styles.heading}>Visitor Comments</Text>
 
-      <View style={styles.card}>
-        <Image style={styles.img} source={require("../../assets/img/visitor1.png")} />
-        <View style={styles.nameRow}>
-          <Text style={styles.nameText}>Darrell Steward</Text>
-          <View style={styles.childRow}>
-            <Text style={styles.ratingText}>4.0</Text>
-            <Image style={styles.ratingimg} source={require("../../assets/img/allStart.png")} />
+      {commentsData.visitorComments.map((item, index) => (
+        <View key={item.id}>
+
+          <View style={styles.card}>
+            <Image style={styles.img} source={images[item.profileImage]} />
+
+            <View style={styles.nameRow}>
+              <Text style={styles.nameText}>{item.name}</Text>
+
+              <View style={styles.childRow}>
+                <Text style={styles.ratingText}>{item.rating}.0</Text>
+
+                <View style={styles.starRow}>
+                  {renderStars(item.rating)}
+                </View>
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
 
-
-      <View style={styles.tag}>
-        <Text style={styles.tagText}>#Delicious</Text>
-        <Text style={styles.tagText}>#Good Ambience</Text>
-      </View>
-
-      <View style={styles.commentRow}>
-        <Text style={styles.commentText}>Your trusted source for honest reviews, local eats,
-          and exclusive dining deals. Your trusted source for honest reviews,
-          local eats, and exclusive dining deals.
-        </Text>
-      </View>
-
-      <View style={styles.imgRow}>
-        <Image style={styles.foodImage} source={require("../../assets/img/food9.png")} />
-        <Image style={styles.foodImage} source={require("../../assets/img/food10.png")} />
-        <Image style={styles.foodImage} source={require("../../assets/img/food11.png")} />
-
-        <View style={styles.moreImageWrapper}>
-          <Image
-            style={styles.foodImage}
-            source={require("../../assets/img/food12.png")}
-          />
-
-          <View style={styles.overlay}>
-            <Text style={styles.moreText}>6 +{`\n`}More</Text>
+          <View style={styles.tag}>
+            {item.tags.map((tag, index) => (
+              <Text key={index} style={styles.tagText}>
+                #{tag}
+              </Text>
+            ))}
           </View>
-        </View>
-      </View>
 
-      <Text style={styles.date}>July 23, 2020</Text>
-
-      <View style={styles.divider}></View>
-
-      <View style={styles.card}>
-        <Image style={styles.img} source={require("../../assets/img/visitor2.png")} />
-        <View style={styles.nameRow}>
-          <Text style={styles.nameText}>Mayank maggon</Text>
-          <View style={styles.childRow}>
-            <Text style={styles.ratingText}>4.0</Text>
-            <Image style={styles.ratingimg} source={require("../../assets/img/allStart.png")} />
+          <View style={styles.commentRow}>
+            <Text style={styles.commentText}>{item.comment}</Text>
           </View>
+
+          {item.images.length > 0 && (
+            <View style={styles.imgRow}>
+              {item.images.slice(0, 3).map((img, index) => (
+                <Image
+                  key={index}
+                  style={styles.foodImage}
+                  source={images[img]}
+                />
+              ))}
+
+              {item.moreImagesCount && (
+                <View style={styles.moreImageWrapper}>
+                  <Image
+                    style={styles.foodImage}
+                    source={images[item.images[3]]}
+                  />
+                  <View style={styles.overlay}>
+                    <Text style={styles.moreText}>
+                      {item.moreImagesCount} +{`\n`}More
+                    </Text>
+                  </View>
+                </View>
+              )}
+            </View>
+          )}
+
+          <Text style={styles.date}>{item.date}</Text>
+
+          {index === 0 && <View style={styles.divider} />}
+
         </View>
-      </View>
-
-
-      <View style={styles.tag}>
-        <Text style={styles.tagText}>#Delicious</Text>
-        <Text style={styles.tagText}>#Authentic</Text>
-      </View>
-
-      <View style={styles.commentRow}>
-        <Text style={styles.commentText}>Your trusted source for honest reviews, local eats,
-          and exclusive dining deals. Your trusted source for honest reviews,
-          local eats, and exclusive dining deals.
-        </Text>
-      </View>
-
-      <Text style={styles.date}>July 2, 2020</Text>
+      ))}
 
       <Pressable style={styles.commmentPress}>
         <Text style={styles.btnText}>View All Comments</Text>
-        <Image style={styles.rightArrow} source={require("../../assets/img/rightArrow.png")} />
+        <Image style={styles.rightArrow} source={images.rightArrow} />
       </Pressable>
-
-
     </View>
-  )
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingHorizontal: 24,
   },
   heading: {
-    fontFamily: 'Lora-SemiBold',
     paddingTop: 36,
     fontSize: 22,
-    fontWeight: 600,
+    fontWeight: "600",
     color: "#111111",
   },
   card: {
     paddingTop: 24,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   img: {
     width: 40,
@@ -112,111 +135,106 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
   },
   childRow: {
-    paddingTop: 5,
-    flexDirection: 'row',
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 4,
   },
   nameText: {
     fontSize: 16,
-    fontWeight: 500,
-    fontFamily: 'DMSans-Medium',
+    fontWeight: "500",
   },
   ratingText: {
     fontSize: 14,
-    fontWeight: 400,
-    fontFamily: 'DMSans-Regular',
+    marginRight: 6,
   },
-  ratingimg: {
-    marginLeft: 4,
-    width: 62,
-    height: 16,
+
+  starRow: {
+    backgroundColor: "rgba(0, 168, 39, 1)",
+    flexDirection: "row",
     borderRadius: 20,
-    },
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    alignItems: "center",
+  },
+
+  star: {
+    width: 6,
+    height: 6,
+    marginRight: 2,
+  },
+
   tag: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   tagText: {
     paddingTop: 20,
     paddingRight: 6,
     fontSize: 14,
-    fontWeight: 600,
-    fontFamily: 'DMSans-SemiBold',
+    fontWeight: "600",
   },
   commentRow: {
     marginTop: 4,
   },
   commentText: {
-    color: "rgba(17, 17, 17, 0.6)",
+    color: "rgba(17,17,17,0.6)",
     fontSize: 16,
-    fontWeight: 400,
-    fontFamily: 'DMSans-Regular',
-    textAlign: 'justify',
+    textAlign: "justify",
   },
   imgRow: {
     marginTop: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   foodImage: {
-    borderRadius: 8,
     width: 73,
     height: 73,
+    borderRadius: 8,
+  },
+  moreImageWrapper: {
+    position: "relative",
+  },
+  overlay: {
+    position: "absolute",
+    inset: 0,
+    backgroundColor: "rgba(17,17,17,0.4)",
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  moreText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "700",
+    textAlign: "center",
   },
   date: {
-    color: "rgba(17, 17, 17, 0.6)",
     marginTop: 16,
     fontSize: 12,
-    fontWeight: 500,
-    fontFamily: 'DMSans-Medium',
+    color: "rgba(17,17,17,0.6)",
   },
   divider: {
     height: 1,
     backgroundColor: "#e0e0e0",
-    marginVertical: 24,
+    marginTop: 24,
   },
   commmentPress: {
     marginTop: 24,
     marginBottom: 36,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     borderWidth: 1,
     borderRadius: 8,
-    alignItems: 'center',
-    borderColor: "#11111133"
+    alignItems: "center",
+    borderColor: "#11111133",
   },
   btnText: {
-    paddingLeft: 16,
-    paddingTop: 21,
-    paddingBottom: 21,
+    padding: 20,
     fontSize: 16,
-    fontWeight: 500,
-    fontFamily: 'Lora-Medium',
+    fontWeight: "500",
   },
   rightArrow: {
     width: 18,
     height: 12,
     marginRight: 20,
   },
-
-
-  moreImageWrapper: {
-    position: "relative",
-  },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0,0,0,0.6)",
-    borderRadius: 12,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  moreText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "700",
-    textAlign: "center",
-    fontFamily: 'DMSans-Regular',
-  },
-})
+});

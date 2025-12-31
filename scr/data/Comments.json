@@ -1,0 +1,25 @@
+{
+  "visitorComments": [
+    {
+      "id": 1,
+      "name": "Darrell Steward",
+      "profileImage": "visitor1",
+      "rating": 5,
+      "tags": ["Delicious", "Good Ambience"],
+      "comment": "Your trusted source for honest reviews, local eats, and exclusive dining deals.",
+      "images": ["food9", "food10", "food11", "food12"],
+      "moreImagesCount": 6,
+      "date": "July 23, 2020"
+    },
+    {
+      "id": 2,
+      "name": "Mayank maggon",
+      "profileImage": "visitor2",
+      "rating": 4,
+      "tags": ["Delicious", "Authentic"],
+      "comment": "Your trusted source for honest reviews, local eats, and exclusive dining deals.",
+      "images": [],
+      "date": "July 2, 2020"
+    }
+  ]
+}

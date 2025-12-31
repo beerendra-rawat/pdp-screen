@@ -8,6 +8,8 @@ import {
     Dimensions,
     TouchableOpacity,
     ImageBackground,
+    Share,
+    Linking,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -21,8 +23,31 @@ const images = [
 ];
 
 export default function Carouselimg() {
+
     const flatListRef = useRef(null);
     const [index, setIndex] = useState(0);
+
+    const [like, setLike] = useState(false);
+
+    const onShare = async () => {
+        try {
+            await Share.share({
+                message: "Check out this restaurant: The Bombay Canteen",
+            });
+        } catch (error) {
+            console.log("Share error:", error);
+        }
+    };
+
+    const openTranslate = () => {
+        const text = "Tell others what made The Bombay Canteen special";
+        const url = `https://translate.google.com/?sl=en&tl=hi&text=${encodeURIComponent(
+            text
+        )}&op=translate`;
+
+        Linking.openURL(url);
+    };
+
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -95,19 +120,19 @@ export default function Carouselimg() {
                 </TouchableOpacity>
 
                 <View style={styles.rightBtn}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={openTranslate}>
                         <View style={styles.rightSmlBtn}>
                             <Image style={styles.translate} source={require("../../assets/img/translate.png")} />
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => setLike(!like)}>
                         <View style={styles.rightSmlBtn}>
-                            <Image style={styles.heart} source={require("../../assets/img/heart.png")} />
+                            <Image style={[styles.heart, like && styles.likeBtn,]} source={require("../../assets/img/heart.png")} />
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={onShare} >
                         <View style={styles.rightSmlBtn}>
                             <Image style={styles.share} source={require("../../assets/img/share.png")} />
                         </View>
@@ -172,7 +197,7 @@ const styles = StyleSheet.create({
         width: 8,
         height: 8,
         borderRadius: 4,
-        backgroundColor: "#ccc",
+        backgroundColor: "rgba(255, 255, 255, 0.4)",
         marginRight: 6,
     },
 
@@ -217,19 +242,19 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 
-    leftArrow:{
+    leftArrow: {
         width: 12,
         height: 9,
     },
-    translate:{
+    translate: {
         width: 15,
         height: 14,
     },
-    heart:{
+    heart: {
         width: 16,
         height: 14,
     },
-    share:{
+    share: {
         width: 14,
         height: 14,
     },
@@ -247,5 +272,9 @@ const styles = StyleSheet.create({
         height: 36,
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
+    likeBtn: {
+        tintColor: "#E53935",
+    },
+
 });

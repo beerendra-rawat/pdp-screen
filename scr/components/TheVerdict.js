@@ -8,11 +8,9 @@ export default function TheVerdict() {
   const maxRating = 5;
 
   useEffect(() => {
-    const ratingFromJson = verdictData.verdict.maxRating;
+    const ratingFromJson = verdictData.verdict.rating;
     setRating(ratingFromJson);
-    console.log(ratingFromJson)
   }, []);
-
 
   const renderStars = () => {
     let stars = [];
@@ -22,8 +20,8 @@ export default function TheVerdict() {
           key={i}
           source={
             i <= rating
-              ? require("../../assets/img/Star.png")
-              : require("../../assets/img/Star-2.png")
+              ? require("../../assets/img/starFilled.png")
+              : require("../../assets/img/starEmpty.png")
           }
           style={styles.star}
         />
@@ -49,9 +47,10 @@ export default function TheVerdict() {
 
           <View style={styles.cardRow}>
             <View>
-              <Text style={styles.subTitle}>
-                {rating.toFixed(1)} out of {maxRating}
-              </Text>
+              <View style={styles.ratingRow}>
+                <Text style={styles.ratingNumber}>{rating.toFixed(1)}</Text>
+                <Text style={styles.subTitle}>out of {maxRating}</Text>
+              </View>
               <View style={styles.starRow}>
                 {renderStars()}
               </View>
@@ -113,11 +112,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 12,
   },
-  subTitle: {
+  ratingRow:{
+    flexDirection: 'row',
+  },
+  ratingNumber:{
     fontFamily: 'DMSans-Medium',
     fontSize: 20,
     fontWeight: 500,
     color: '#FFFFFF',
+  },
+  subTitle: {
+    paddingLeft: 5,
+    paddingTop: 5,
+    fontFamily: 'DMSans-Medium',
+    fontSize: 14,
+    fontWeight: 500,
+    color: "rgba(255, 255, 255, 0.5)",
   },
   starRow: {
     flexDirection: "row",

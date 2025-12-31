@@ -8,6 +8,14 @@ import {
   ScrollView,
 } from "react-native";
 import CustomeModal from "../util/CustomeModal";
+import RestaurantsData from "../data/NearbyRestaurants.json"
+
+const images = {
+  resto1: require("../../assets/img/resto1.png"),
+  resto2: require("../../assets/img/resto2.png"),
+  starFilled: require("../../assets/img/starFilled.png"),
+};
+
 
 export default function Experience() {
   const [visible, setVisible] = useState(false)
@@ -42,37 +50,30 @@ export default function Experience() {
             snapToInterval={260}
             decelerationRate="fast"
           >
-            <View style={styles.card}>
-              <Image
-                style={styles.image}
-                source={require("../../assets/img/resto1.png")}
-              />
-              <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
-              <View style={styles.ratingRow}>
-                <Text style={styles.rating}>4.0</Text>
-                <View style={styles.imgBg}>
-                  <Image style={styles.ratingImg} source={require("../../assets/img/Star.png")} />
-                </View>
-                <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
-              </View>
-              <Text style={styles.temp}>Casual Dining</Text>
-            </View>
+            {RestaurantsData.nearbyRestaurants.map((item, index) => (
+              <View key={item.id}>
 
-            <View style={styles.card}>
-              <Image
-                style={styles.image}
-                source={require("../../assets/img/resto2.png")}
-              />
-              <Text style={styles.cardTitle}>Willingdon Sports Club</Text>
-              <View style={styles.ratingRow}>
-                <Text style={styles.rating}>4.0</Text>
-                <View style={styles.imgBg}>
-                  <Image style={styles.ratingImg} source={require("../../assets/img/Star.png")} />
+                <View style={styles.card}>
+                  <Image
+                    style={styles.image}
+                    source={images[item.image]}
+                  />
+                  <Text style={styles.cardTitle}>{item.name}</Text>
+                  <View style={styles.ratingRow}>
+                    <Text style={styles.rating}>{item.rating} </Text>
+                    <View style={styles.imgBg}>
+                      <Image style={styles.ratingImg} source={images.starFilled} />
+                    </View>
+                    <View style={styles.dot} />
+                    <Text style={styles.cardSubb}>{item.cuisine}</Text>
+                    <View style={styles.dot} />
+                    <Text style={styles.cardSubb}>{item.priceRange}</Text>
+                  </View>
+                  <Text style={styles.temp}>{item.category}</Text>
                 </View>
-                <Text style={styles.cardSubb}> • Indian • ₹₹₹₹</Text>
+
               </View>
-              <Text style={styles.temp}>Casual Dining</Text>
-            </View>
+            ))}
 
           </ScrollView>
         </View>
@@ -156,7 +157,6 @@ const styles = StyleSheet.create({
     height: 5,
   },
   imgBg: {
-    marginLeft: 5,
     width: 12,
     height: 12,
     borderRadius: 40,
@@ -165,14 +165,14 @@ const styles = StyleSheet.create({
     paddingTop: 3,
   },
   rating: {
-    color: "#555",
+    color: "rgba(17, 17, 17, 1)",
     fontSize: 14,
     fontWeight: 400,
     fontFamily: 'DMSans-Regular',
   },
   cardSubb: {
     marginLeft: 4,
-    color: "#555",
+    color: "rgba(17, 17, 17, 1)",
     fontSize: 14,
     fontWeight: 400,
     fontFamily: 'DMSans-Regular',
@@ -185,16 +185,12 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     fontFamily: 'DMSans-Regular',
   },
-
-  fixedBtn: {
-    position: "absolute",
-    bottom: 24,
-    left: 24,
-    right: 24,
-    backgroundColor: "#000",
-    paddingVertical: 16,
-    borderRadius: 12,
-    zIndex: 10,
+  dot: {
+    marginLeft: 4,
+    width: 3,
+    height: 3,
+    backgroundColor: "rgba(17, 17, 17, 0.4)",
+    borderRadius: 3,
   },
 
 });

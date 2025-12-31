@@ -1,9 +1,9 @@
 {
-    "verdict": {
-        "id": "1",
-        "rating": 4,
-        "maxRating": 5,
-        "reviewer": "Dr. Habib",
-        "date": "20 Oct, 2025"
-    }
+  "verdict": {
+    "id": "1",
+    "rating": 3,
+    "maxRating": 5,
+    "reviewer": "Dr. Habib",
+    "date": "20 Oct, 2025"
+  }
 }

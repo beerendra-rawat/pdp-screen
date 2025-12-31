@@ -1,0 +1,22 @@
+{
+  "nearbyRestaurants": [
+    {
+      "id": 1,
+      "name": "Willingdon Sports Club",
+      "image": "resto1",
+      "rating": "4.0",
+      "cuisine": "Indian",
+      "priceRange": "₹₹₹₹",
+      "category": "Casual Dining"
+    },
+    {
+      "id": 2,
+      "name": "Willingdon Sports Club",
+      "image": "resto2",
+      "rating": "4.2",
+      "cuisine": "Indian",
+      "priceRange": "₹₹₹₹",
+      "category": "Casual Dining"
+    }
+  ]
+}
