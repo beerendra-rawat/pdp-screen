@@ -73,26 +73,17 @@ export default function Carouselimg() {
                 keyExtractor={(_, i) => i.toString()}
                 renderItem={({ item }) => (
 
-                    <ImageBackground source={item} style={styles.image} resizeMode="cover">
+                    <ImageBackground source={item} style={styles.image} resizeMode="cover" >
                         <LinearGradient
-                            colors={["rgba(17,17,17,0.6)", "transparent"]}
-                            style={styles.topFade}
-                        />
-                        <LinearGradient
-                            colors={["transparent", "rgba(17,17,17,0.6)"]}
-                            style={styles.bottomFade}
-                        />
-                        <LinearGradient
-                            colors={["rgba(17,17,17,0.6)", "transparent"]}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={styles.leftFade}
-                        />
-                        <LinearGradient
-                            colors={["transparent", "rgba(17,17,17,0.6)"]}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={styles.rightFade}
+                            colors={[
+                                "rgba(17,17,17,0.7)", // edges
+                                "rgba(17,17,17,0.3)",
+                                "transparent",       // center
+                                "rgba(17,17,17,0.3)",
+                                "rgba(17,17,17,0.7)", // edges
+                            ]}
+                            locations={[0, 0.2, 0.5, 0.8, 1]}
+                            style={StyleSheet.absoluteFillObject}
                         />
                     </ImageBackground>
                 )}
@@ -152,38 +143,6 @@ const styles = StyleSheet.create({
     image: {
         width,
         height: 332,
-    },
-
-    topFade: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 80,
-    },
-
-    bottomFade: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: 80,
-    },
-
-    leftFade: {
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: 0,
-        width: 80,
-    },
-
-    rightFade: {
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        right: 0,
-        width: 80,
     },
 
     indicator: {

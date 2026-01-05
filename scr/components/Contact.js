@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 36,
     borderRadius: 12,
-    backgroundColor: "rgba(11, 22, 50, 0.6)",
+    backgroundColor: "#1a202e",
   },
   mapWrapper: {
     position: "relative",

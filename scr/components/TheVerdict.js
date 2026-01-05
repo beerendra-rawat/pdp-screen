@@ -36,6 +36,8 @@ export default function TheVerdict() {
       locations={[0.2478, 0.9465]}
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 1 }}
+      // colors={["#0D0D0D","#2E2E2E"]}
+      // style={styles.bg}
     >
       <ImageBackground
         source={require("../../assets/img/bgImage.png")}
