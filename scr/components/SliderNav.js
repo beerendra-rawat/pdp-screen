@@ -1,5 +1,11 @@
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
-import { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import { useEffect, useRef } from "react";
 
 const tabs = [
   "The Verdict",
@@ -9,25 +15,28 @@ const tabs = [
   "Experience",
 ];
 
-export default function SliderNav({ onTabPress, refs }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function SliderNav({ activeIndex, onTabPress }) {
+  const scrollRef = useRef(null);
+  const tabLayouts = useRef({});
 
-  const sectionRefs = [
-    refs.verdictRef,
-    refs.photoRef,
-    refs.contactRef,
-    refs.commentRef,
-    refs.experienceRef,
-  ];
-
-  const handlePress = (index) => {
-    setActiveIndex(index);
-    onTabPress(sectionRefs[index]);
-  };
+  //auto scroll tab bar
+  useEffect(() => {
+    const x = tabLayouts.current[activeIndex];
+    if (x !== undefined) {
+      scrollRef.current?.scrollTo({
+        x: Math.max(x - 50, 0),
+        animated: true,
+      });
+    }
+  }, [activeIndex]);
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        ref={scrollRef}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
         <View style={styles.row}>
           {tabs.map((item, index) => {
             const isActive = activeIndex === index;
@@ -36,15 +45,12 @@ export default function SliderNav({ onTabPress, refs }) {
               <TouchableOpacity
                 key={index}
                 style={styles.item}
-                onPress={() => handlePress(index)}
+                onPress={() => onTabPress(index)}
+                onLayout={(e) => {
+                  tabLayouts.current[index] = e.nativeEvent.layout.x;
+                }}
               >
-                <Text
-                  style={[
-                    styles.text,
-                    isActive && styles.activeText,
-                  ]}
-                  numberOfLines={1}
-                >
+                <Text style={[styles.text, isActive && styles.activeText]}>
                   {item}
                 </Text>
 
@@ -57,6 +63,7 @@ export default function SliderNav({ onTabPress, refs }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFFFFF",
@@ -71,9 +78,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontWeight: 400,
     color: "#111",
     fontFamily: "DMSans-Medium",
+  },
+  activeText: {
+    fontFamily: "DMSans-Bold",
   },
   activeLine: {
     marginTop: 6,
@@ -82,10 +91,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#D3072B",
     borderRadius: 2,
   },
-  activeText: {
-    fontSize: 16,
-    fontWeight: 500,
-    fontFamily: "DMSans-Bold",
-  },
-
 });
